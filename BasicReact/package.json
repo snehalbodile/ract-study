@@ -1,0 +1,25 @@
+{
+  "name": "snehal-react-study",
+  "version": "1.0.0",
+  "description": "Namaste React by snehal-react-study",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/snehalbodile/ract-study.git"
+  },
+  "author": "Snehal Bodile",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/snehalbodile/ract-study/issues"
+  },
+  "homepage": "https://github.com/snehalbodile/ract-study#readme",
+  "devDependencies": {
+    "parcel": "^2.14.2"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}
