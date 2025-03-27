@@ -1,58 +1,3 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-
-/*
-* Header 
-* -Logo
-* -nav Item
-* Body
-* -Search
-* -Restaurant Container
-* -Restayrant Card
-* Footer
-* -Copyright
-* - Links
-* - Address, Contact
-*/
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-
-const Header = () =>{
-    return (
-        <div className="col-md-12">
-            <nav className="navbar navbar-default">
-                <div className="container-fluid">
-                    <div className="navbar-header">
-                    <a className="navbar-brand" href="#">Bodile Food</a>
-                    </div>
-                    <ul className="nav navbar-nav">
-                    <li className="active"><a href="#">Home</a></li>
-                    <li><a href="#">Card</a></li>
-                    <li><a href="#">About Us </a></li>
-                    <li><a href="#">Contact us</a></li>
-                    </ul>
-                </div>
-            </nav>
-      </div>
-    );
-};
-const RestCard = (prop) => {
-    console.log(prop);
-    const {restData} = prop;
-    console.log(restData);
-    return(
-        <div className="card col-sm-4 rest-card">
-            <img src={ "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" +
-          restData.data.cloudinaryImageId} className="card-img-top rest-logo" alt="..."></img>
-        <div className="card-body">
-            <h4 className="card-title">{restData.data.name}</h4>
-            <p>{restData.data.cuisines.join(", ")}</p>
-            <button type="button" className="btn btn-success">{restData.data.avgRating} * </button>
-        </div>
-        </div>
-    );
-};
-
 const restrautList = [
     {
       type: "restaurant",
@@ -784,24 +729,5 @@ const restrautList = [
       subtype: "basic",
     },
   ];
-const Body = () => {
-    return (
-        <div className="container">
-            {
-                restrautList.map((restaurant) => {
-                    return <RestCard key ={restaurant.data.uuid} restData = {restaurant}/>
-                })
-            }
-           
-        </div>
-    );
-};
-const AppLayout = () =>{
-    return(
-        <div className="row">
-            <Header/>
-            <Body/>
-      </div>
-    );
-};
-root.render(<AppLayout/>);
+
+  export default restrautList;
