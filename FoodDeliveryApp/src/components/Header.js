@@ -1,4 +1,4 @@
-
+import { Link } from "react-router";
 const Header = () =>{
     return (
         <div className="col-md-12">
@@ -8,10 +8,12 @@ const Header = () =>{
                     <a className="navbar-brand" href="#">Bodile Food</a>
                     </div>
                     <ul className="nav navbar-nav">
-                    <li className="active"><a href="#">Home</a></li>
+                    <li className="active">
+                        <Link to="/">Home</Link>
+                    </li>
                     <li><a href="#">Card</a></li>
-                    <li><a href="#">About Us </a></li>
-                    <li><a href="#">Contact us</a></li>
+                    <li> <Link to="about">About Us</Link></li>
+                    <li> <Link to="contact">Contact us</Link></li>
                     </ul>
                 </div>
             </nav>
