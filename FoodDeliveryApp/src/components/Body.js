@@ -1,9 +1,9 @@
 import restrautList from "../utilis/utilis";
 import RestCard from "./RestCard";
+import useOnlineStatus from "../utilis/useOnlineStatus";
 import {useState,useEffect} from "react";
 const Body = () => {
-
-    var [restaurants,setRestaurant] = useState([]);
+     var [restaurants,setRestaurant] = useState([]);
     var [filterRestaurants,setFilterRestaurant] = useState([]);
     var [searchText,setSearchText] = useState("");
     useEffect(()=>{
@@ -16,6 +16,17 @@ const Body = () => {
         setRestaurant(apiData.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
         setFilterRestaurant(apiData.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
        // console.log(apiData.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
+    }
+    const onlineStatus = useOnlineStatus();
+    console.log(onlineStatus);
+   if(onlineStatus === false){
+    console.log("Offline Status");
+        return(<div className="col-md-12">
+                <h3>
+                    Looks like you're offline!! Please check your internet connection.....
+                </h3>
+            </div> 
+            );
     }
     return (
         <div className="container">

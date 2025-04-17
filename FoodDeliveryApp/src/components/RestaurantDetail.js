@@ -1,17 +1,9 @@
 import {useParams} from "react-router";
-import { useState, useEffect } from "react";
+import useRestInfo from "../utilis/useFetchRestoDetails";
 const RestaurantDetail = () =>{
-    const [restInfo,setRestInfo] = useState([]);
     const requestData = useParams();
-   const fetchData = async() =>{
-        const data =  await fetch("https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=18.5995992&lng=73.77352619999999&restaurantId="+requestData.restId+"&catalog_qa=undefined&submitAction=ENTER");
-        const apiData = await data.json();
-        console.log(apiData);
-        setRestInfo(apiData?.data?.cards[2]?.card?.card?.info);
-    };  
-    useEffect(()=>{fetchData()},[]);
+    var restInfo = useRestInfo(requestData.restId); 
     
-    console.log(restInfo);
     return (
         <div className="col-md-offset-2 col-md-6 rest-card">
             <div className="card-body">
