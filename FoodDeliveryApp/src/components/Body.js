@@ -15,10 +15,11 @@ const Body = () => {
         const apiData = await data.json();
         setRestaurant(apiData.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
         setFilterRestaurant(apiData.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
+        console.log(restaurants);
        // console.log(apiData.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
     }
     const onlineStatus = useOnlineStatus();
-    console.log(onlineStatus);
+    // console.log(onlineStatus);
    if(onlineStatus === false){
     console.log("Offline Status");
         return(<div className="col-md-12">
