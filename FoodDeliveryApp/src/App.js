@@ -8,17 +8,20 @@ import Error from "./components/Error";
 import RestaurantDetail from "./components/RestaurantDetail";
 import { createBrowserRouter,RouterProvider,Outlet } from "react-router";
 import { lazy, Suspense } from "react";
-
+import {Provider} from "react-redux";
+import appStore from "./utilis/appStore";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 const About = lazy(()=>import("./components/About")); // lazy loading 
 
 const AppLayout = () =>{
     return(
-        <div className="row">
-            <Header/>
-            <Outlet/>
-      </div>
+        <Provider store={appStore}>
+            <div className="row">
+                <Header/>
+                <Outlet/>
+        </div>
+      </Provider>
     );
 };
 // root.render(<AppLayout/>);

@@ -1,11 +1,20 @@
 import {useParams} from "react-router";
 import useRestInfo from "../utilis/useFetchRestoDetails";
+import { useDispatch } from "react-redux";
+import { addItem } from "../utilis/cartSlice";
 const RestaurantDetail = () =>{
     const requestData = useParams();
     var restData = useRestInfo(requestData.restId); 
         console.log(restData);
     var restInfo = restData.restInfo;
     var restItems = restData.restItems;
+
+    const dispatch = useDispatch();
+
+    const addToCart = (info)=>{
+      //dispatch an action
+      dispatch(addItem('pizza'));
+    }
     return (
         <div className="col-md-offset-2 col-md-6 rest-card">
             <div className="card-body">
@@ -27,6 +36,7 @@ const RestaurantDetail = () =>{
                                             return(
                                                 <div key={item.card.info.id}>
                                                      <hr></hr>
+                                                   <input className="btn btn-primary btn-sm " type="button" value="Add" onClick={()=>{addToCart(item.card.info)}}></input>
                                                     <p><b>{item?.card?.info?.name}</b></p>
                                                     <p><b>Rs.{item?.card?.info?.price/100}</b></p>
                                                     <p className="text-success"><b>★ {item?.card?.info?.ratings?.aggregatedRating?.rating}</b></p>

@@ -11,8 +11,7 @@ class AboutClass extends React.Component {
         console.log("componentDidMount");
     }
     render(){
-        console.log("render");
-        return (
+       return (
        
             <div>
                 <h3>Name: {this.props.name}</h3>
