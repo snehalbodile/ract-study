@@ -34,7 +34,7 @@ const Body = () => {
             <div className="row">
                 <div className="col-xs-6 col-md-4">
                 <div className="input-group">
-                    <input type="text" className="form-control" placeholder="Search" id="txtSearch" value ={searchText} 
+                    <inpu   t type="text" className="form-control" placeholder="Search" id="txtSearch" value ={searchText} 
                     onChange={(e)=>{
                        setSearchText(e.target.value);
                     }}
