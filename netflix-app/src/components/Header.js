@@ -1,7 +1,7 @@
 const Header = ()=>{
     return(
-        <div>
-            <h1>Header</h1>
+        <div className="position-absolute shadow-lg p-3 mb-5 bg-body rounded">
+            <img alt="logo" src="https://assets.nflxext.com/en_us/home/logo_v7.png"></img>
         </div>
     );   
 }
