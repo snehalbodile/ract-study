@@ -1,13 +1,17 @@
 import Header from "./Header";
 import { useState,useRef } from "react";
 import validateForm from "../utilis/validation";
+import { useNavigate } from "react-router-dom";
+import auth from "../utilis/firebase";
+import { createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = ()=>{
-    const [isLogin,setLogin] = useState(true);
-     const [errorMsg,setErrorMsg] = useState("");
+   const [isLogin,setLogin] = useState(true);
+    const [errorMsg,setErrorMsg] = useState("");
     const name = useRef(null);
     const email = useRef(null);
     const password = useRef(null);
+     const navigate = useNavigate(); 
     const formHandler = ()=>{
         setLogin(!isLogin);
     }
@@ -17,6 +21,39 @@ const Login = ()=>{
             setErrorMsg(validate);
         }else{
             setErrorMsg("");
+            if(isLogin){
+                     console.log(email.current.value,password.current.value);
+                signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+                .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                // console.log(user);
+                navigate("/browse");
+                // ...
+                })
+                .catch((error) => {
+                    
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                });
+            }else{
+                // const auth = getAuth();
+                createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+                .then((userCredential) => {
+                    // Signed up 
+                    const user = userCredential.user;
+                    console.log(user);
+                     navigate("/browse");
+                    // ...
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    // ..
+                });
+                
+                }
+            
         }
     }
 
